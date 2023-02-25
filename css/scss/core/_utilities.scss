@@ -1,0 +1,31 @@
+html, body {
+    @include default-font;
+    @include default-colors;
+}
+
+.totop-arrow {
+    @include default-colors-with-border;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    font-size: 1.5rem;
+    padding: 5px 16px;
+    border-radius: 50%;
+    transition: background-color 0.25s, color 0.15s;
+
+    &:hover {
+        @include dark-colors-with-border;
+    }
+}
+
+.menu-badge {
+    @include theme-colors;
+    @include content-center;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
