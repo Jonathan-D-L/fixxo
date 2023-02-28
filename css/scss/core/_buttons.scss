@@ -35,9 +35,56 @@ button {
 
     &:hover {
         @include dark-colors;
-        text-decoration: none;    
+        text-decoration: none;
     }
 }
 
+.btn-theme-1 {
+    @include default-colors-with-border;
+    padding: 13px 40px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: $font-weight-semibold;
+    display: inline-block;
+    transition: background-color 0.25s;
+    position: relative;
 
+    &::before {
+        content: "";
+        border-top: 2px solid $color-dark-2;
+        border-left: 2px solid $color-dark-2;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        height: 18px;
+        width: 18px;
+    }
 
+    &::after {
+        content: "";
+        border-bottom: 2px solid $color-dark-2;
+        border-right: 2px solid $color-dark-2;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        height: 18px;
+        width: 18px;
+    }
+
+    &:hover {
+        @include dark-colors-with-border;
+        text-decoration: none;
+
+        &::before {
+            content: "";
+            border-top: 2px solid $color-light-1;
+            border-left: 2px solid $color-light-1;
+        }
+
+        &::after {
+            content: "";
+            border-bottom: 2px solid $color-light-1;
+            border-right: 2px solid $color-light-1;
+        }
+    }
+}
