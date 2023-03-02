@@ -1,0 +1,86 @@
+.services {
+    margin-top: 90px;
+
+    .service {
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        border-top: 1px solid $color-dark-3;
+        padding-top: 60px;
+        max-width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include md {
+            max-width: 70%;
+        }
+
+        .service-box {
+            height: 150px;
+            width: 25%;
+            display: block;
+            text-align: center;
+
+            @include md {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .menu-icons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .menu-link {
+                    height: 45px;
+                    width: 45px;
+                    font-size: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #ffffff;
+                    color: #222529;
+                    border-radius: 50%;
+                    text-decoration: none;
+                    box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.15);
+                    transition: background-color 0.25s, color 0.20s;
+                    margin-bottom: 0.4rem;
+
+                    @include md {
+                        height: 55px;
+                        width: 55px;
+                        font-size: 22px;
+                    }
+
+                    &:hover,
+                    &.active {
+                        background-color: #222529;
+                        color: #ffffff;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            .title {
+                font-size: 0.5em;
+                font-weight: $font-weight-semibold;
+                margin-bottom: 0.1rem;
+
+                @include md {
+                    font-size: 0.8em;
+                    font-weight: $font-weight-semibold;
+                    margin-bottom: 0.2rem;
+                }
+            }
+
+            .defoult-text {
+                font-size: 0.4em;
+
+                @include md {
+                    font-size: 0.5em;
+                }
+            }
+        }
+    }
+}
