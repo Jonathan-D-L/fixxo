@@ -47,12 +47,6 @@
                     transition: background-color 0.25s, color 0.20s;
                     margin-bottom: 0.4rem;
 
-                    @include md {
-                        height: 55px;
-                        width: 55px;
-                        font-size: 22px;
-                    }
-
                     &:hover,
                     &.active {
                         background-color: #222529;
