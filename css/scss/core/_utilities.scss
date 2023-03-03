@@ -1,13 +1,19 @@
-html, body {
+html,
+body {
     @include default-font;
     @include default-colors;
 }
 
-.totop-arrow {
+.hide {
+    display: none;
+}
+
+#top-arrow {
+    display: none;
     @include default-colors-with-border;
     position: fixed;
-    right: 50px;
-    bottom: 50px;
+    right: 30px;
+    bottom: 30px;
     font-size: 1.5rem;
     padding: 5px 16px;
     border-radius: 50%;

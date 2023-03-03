@@ -57,22 +57,23 @@
             }
 
             .title {
-                font-size: 0.5em;
+                font-size: 0.8em;
                 font-weight: $font-weight-semibold;
                 margin-bottom: 0.1rem;
 
                 @include md {
-                    font-size: 0.8em;
+                    font-size: 1em;
                     font-weight: $font-weight-semibold;
                     margin-bottom: 0.2rem;
                 }
             }
 
             .defoult-text {
-                font-size: 0.4em;
+                font-size: 0.8em;
+                display: none;
 
                 @include md {
-                    font-size: 0.5em;
+                    display: block;
                 }
             }
         }

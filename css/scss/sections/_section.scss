@@ -1,23 +1,27 @@
 .section {
     margin-top: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    @include xl {
+        display: flex;
+        justify-content: center;
+
+    }
+
     .section-grid {
+        max-width: 1600px;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-areas: "section1"
             "section2"
             "section4"
             "section3";
-            
-            max-width: 1600px;
+
         @include xl {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-areas: "section1 section2"
                 "section3 section4";
-                
+
         }
 
         .section-1 {
@@ -106,13 +110,12 @@
                 display: grid;
                 grid-template-columns: 1fr;
                 gap: 20px;
+
                 @include md {
                     grid-template-columns: 1fr 1fr 1fr;
                 }
 
                 @include lg {
-                    grid-template-columns: 1fr 1fr 1fr;
-
                     .product-card .product-card-img .product-card-menu {
                         opacity: 0%;
                         transition: all 0.15s;
@@ -247,13 +250,6 @@
                         img {
                             width: 100%;
                             object-fit: cover;
-                        }
-
-                        @include xl {
-                            img {
-                                width: 100%;
-                                object-fit: cover;
-                            }
                         }
 
                         .menu-icons {

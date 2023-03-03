@@ -18,6 +18,10 @@
         grid-template-columns: 1fr;
         gap: 30px;
 
+        @include md {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
         .product-card {
             margin: 0;
 
@@ -37,6 +41,11 @@
                     position: absolute;
                     top: 15px;
                     right: 15px;
+
+                    @include md {
+                        top: 10px;
+                        right: 15px;
+                    }
                 }
 
                 .menu-icons .menu-link {
@@ -54,15 +63,21 @@
                     margin-left: 1rem;
                     transition: background-color 0.25s, color 0.20s;
                     margin-bottom: 1rem;
-                }
 
-                .menu-icons .menu-link:hover,
-                .menu-icons .menu-link.active {
-                    background-color: #222529;
-                    color: #ffffff;
-                    text-decoration: none;
-                }
+                    @include md {
+                        font-size: 16px;
+                        height: 36px;
+                        width: 36px;
+                        margin-bottom: 8px;
+                    }
 
+                    &:hover,
+                    &.active {
+                        background-color: #222529;
+                        color: #ffffff;
+                        text-decoration: none;
+                    }
+                }
 
                 .btn-theme {
                     position: absolute;
@@ -70,6 +85,11 @@
                     left: 0;
                     right: 0;
                     text-align: center;
+
+                    @include md {
+                        padding: 13px 50px;
+                        font-size: 16px;
+                    }
                 }
             }
 
@@ -108,24 +128,13 @@
 
 @include md {
     .featured-products .product-grid {
-        grid-template-columns: 1fr 1fr 1fr;
 
-        .product-card .product-card-img .menu-icons {
-            top: 10px;
-            right: 15px;
-        }
 
-        .product-card .product-card-img .menu-icons .menu-link {
-            font-size: 16px;
-            height: 36px;
-            width: 36px;
-            margin-bottom: 8px;
-        }
+        .product-card .product-card-img .menu-icons {}
 
-        .product-card .product-card-img .btn-theme {
-            padding: 13px 50px;
-            font-size: 16px;
-        }
+        .product-card .product-card-img .menu-icons .menu-link {}
+
+        .product-card .product-card-img .btn-theme {}
 
         .product-card .product-card-category {
             font-size: 13px;

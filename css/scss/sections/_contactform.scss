@@ -1,67 +1,66 @@
 .contact-form {
     margin-top: 70px;
-}
 
-    .contact-form h1 {
+    h1 {
         text-align: center;
         font-size: 18px;
         font-weight: 700;
     }
 
-    .contact-form form {
+    form {
         margin-top: 40px;
         margin-bottom: 100px;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-areas: "name"
-                             "email"
-                             "comments"
-                             "button";
+            "email"
+            "comments"
+            "button";
         gap: 20px;
-    }
 
-    .contact-form form .error {
-        font-size: 0.9em;
-        padding: 5px;
-        color:#ff7373;
-    }
+        @include md {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "name email"
+                "comments comments"
+                "button empty";
+        }
 
-    .contact-form form input,
-    .contact-form form textarea {
-        width: 100%;
-        padding: 18px 20px;
-        border: 1px solid rgba(112,112,112, 0.4);
-    }
-    .contact-form form textarea {
-        height: 140px;
-        resize: none;
-    }
+        .error {
+            font-size: 0.9em;
+            padding: 5px;
+            color: #ff7373;
+        }
 
-    .contact-form form button {
-        grid-area: button;
-    }
+        input,
+        textarea {
+            width: 100%;
+            padding: 18px 20px;
+            border: 1px solid rgba(112, 112, 112, 0.4);
+        }
 
-    .contact-form form .contact-form-name {
-        grid-area: name;
-    }
-    .contact-form form .contact-form-email {
-        grid-area: email;
-    }
-    .contact-form form .contact-form-comments {
-        grid-area: comments;
-    }
+        textarea {
+            height: 140px;
+            resize: none;
+        }
 
-@include md {
-    .contact-form form {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: "name email"
-                             "comments comments"
-                             "button empty";
-    }
-}
+        button {
+            grid-area: button;
 
-@include lg {
-    .contact-form form button {
-        width: 70%;
+            @include lg {
+                width: 70%;
+            }
+        }
+
+        .contact-form-name {
+            grid-area: name;
+        }
+
+        .contact-form-email {
+            grid-area: email;
+        }
+
+        .contact-form-comments {
+            grid-area: comments;
+        }
     }
 }
