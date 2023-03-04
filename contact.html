@@ -72,20 +72,20 @@
     <section class="contact-form">
         <div class="container">
             <h1>Come in Contact with Us</h1>
-            <form method="post">
+            <form novalidate onsubmit="handleSubmit(event)">
                 <div class="contact-form-name">
-                    <input id="name" name="name" type="text" placeholder="Your Name">
-                    <div class="error">You must provide a valid name</div>
+                    <input id="name" name="name" type="text" placeholder="Your Name" required onkeyup="validate(event)">
+                    <div id="error-name" class="error-msg"></div>
                 </div>
                 <div class="contact-form-email">
-                    <input id="email" name="email" type="email" placeholder="Your Mail">
-                    <div class="error">You must provide an valid e-mail address</div>
+                    <input id="email" name="email" type="email" placeholder="Your Mail" required onkeyup="validate(event)">
+                    <div id="error-email" class="error-msg"></div>
                 </div>
                 <div class="contact-form-comments">
-                    <textarea id="comments" name="comments" placeholder="Comments"></textarea>
-                    <div class="error">You must provide a comment</div>
+                    <textarea id="comment" name="comment" placeholder="Comments" required onkeyup="validate(event)"></textarea>
+                    <div id="error-comment" class="error-msg"></div>
                 </div>
-
+                <div id="error-submit" class="error-msg"></div>
                 <button class="btn-theme" type="submit">Post Comments</button>
             </form>
         </div>
