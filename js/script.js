@@ -11,17 +11,64 @@ window.addEventListener('scroll', function () {
     }
 })
 
-async function getProducts(target, tag) {
-    const element = document.querySelector(target)
-    const res = await fetch(`https://kyh-net22.azurewebsites.net/api/products/${tag}`)
-    const data = await res.json()
-    for (let item of data) {
-        // element.innerHTML +=
-
+function convertToStars(starRating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= starRating) {
+            stars += '<i class="fa-solid fa-sharp fa-star"></i>';
+        } else {
+            stars += '<i class="fa-regular fa-sharp fa-star"></i>';
+        }
     }
+    return stars;
 }
 
+/*  
+    category: 
+    currency: 
+    discountPrice: 
+    imageUrl: 
+    name: 
+    originalPrice: 
+    starRating: 
+    tag:
+*/
+
+async function getData() {
+    const res = await fetch('https://kyh-net22.azurewebsites.net/api/products')
+    const data = await res.json()
+    for (let product of data) {
+        console.log(product)
+        if (product.tag === 'featured') {
+            document.getElementById('products').innerHTML +=
+                `<div class="product-card">
+                <div class="product-card-img">
+                <img src="${product.imageUrl}">
+                <div class="product-card-menu">
+                <nav class="menu-icons">
+                <a class="menu-link" href="#"><i class="fa-regular fa-code-compare"></i></a>
+                <a class="menu-link" href="#"><i class="fa-regular fa-heart"></i></a>
+                <a class="menu-link" href="#"><i class="fa-regular fa-bag-shopping"></i></a>
+                </nav>
+                <a href="#" class="btn-theme">QUICK VIEW</a>
+                </div>
+                </div>
+                <div class="product-card-body">
+                <p class="product-card-category">${product.category}</p>
+                <p class="product-card-title">${product.name}</p>
+                <div class="product-card-rating">
+                ${convertToStars(product.starRating)}
+                </div>
+                <p class="product-card-price">${product.originalPrice} ${product.currency}</p>
+                </div>
+        </div>`
+        }
+    }
+}
+getData()
+
 //apiname/swagger
+
 async function handleContactForm(e) {
     e.preventDefault()
 
