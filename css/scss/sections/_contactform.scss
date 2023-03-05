@@ -43,13 +43,6 @@
             resize: none;
         }
 
-        button {
-            grid-area: button;
-
-            @include lg {
-                width: 70%;
-            }
-        }
 
         .contact-form-name {
             grid-area: name;
@@ -61,6 +54,13 @@
 
         .contact-form-comments {
             grid-area: comments;
+        }
+
+        .contact-form-submit {
+            grid-area: button;
+            @include lg {
+                width: 70%;
+            }
         }
     }
 }

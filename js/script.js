@@ -174,10 +174,15 @@ async function handleSubmit(e) {
         })
 
         if (res.status === 200) {
+            let submit = document.getElementById("error-submit")
+            submit.style.color = "#000000";
+            submit.innerHTML = 'Tack för din förfrågan!'
             console.log('Tack för din förfrågan!')
         }
         else {
+            document.getElementById('error-submit').innerHTML = 'Något gick fel.'
             console.log('error: ')
         }
+
     }
 }
