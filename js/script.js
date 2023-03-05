@@ -107,15 +107,12 @@ function validateComment(element) {
 function validate(event) {
     switch (event.target.name) {
         case 'email':
-            console.log("validate email")
             validateEmail(event.target)
             break;
         case 'name':
-            console.log("validate name")
             validateName(event.target)
             break;
         case 'comment':
-            console.log("validate comment")
             validateComment(event.target)
             break;
     }
@@ -131,7 +128,6 @@ async function handleSubmit(e) {
         if (element.required) {
             const errorElement = document.getElementById(`error-${element.name}`)
             if (element.value.length === 0) {
-                console.log("handlesubmit if")
                 switch (element.name) {
                     case 'email':
                         errorElement.innerHTML = `You must provide an valid ${element.name} adress.`
@@ -146,7 +142,6 @@ async function handleSubmit(e) {
                 errors.push(false)
             } else {
                 errorElement.innerHTML = ``
-                console.log("handlesubmit else")
                 switch (element.name) {
                     case 'email':
                         errors.push(validateEmail(element))
