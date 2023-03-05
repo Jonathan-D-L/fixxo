@@ -71,12 +71,6 @@ async function getData() {
 }
 getData()
 
-
-
-//apiname/swagger
-
-
-
 function validateEmail(element) {
     const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const errorElement = document.getElementById(`error-${element.name}`)
@@ -113,12 +107,15 @@ function validateComment(element) {
 function validate(event) {
     switch (event.target.name) {
         case 'email':
+            console.log("validate email")
             validateEmail(event.target)
             break;
         case 'name':
+            console.log("validate name")
             validateName(event.target)
             break;
         case 'comment':
+            console.log("validate comment")
             validateComment(event.target)
             break;
     }
@@ -134,6 +131,7 @@ async function handleSubmit(e) {
         if (element.required) {
             const errorElement = document.getElementById(`error-${element.name}`)
             if (element.value.length === 0) {
+                console.log("handlesubmit if")
                 switch (element.name) {
                     case 'email':
                         errorElement.innerHTML = `You must provide an valid ${element.name} adress.`
@@ -148,7 +146,7 @@ async function handleSubmit(e) {
                 errors.push(false)
             } else {
                 errorElement.innerHTML = ``
-
+                console.log("handlesubmit else")
                 switch (element.name) {
                     case 'email':
                         errors.push(validateEmail(element))
@@ -163,31 +161,28 @@ async function handleSubmit(e) {
             }
         }
     }
+
+    if (!errors.includes(false)) {
+
+        const form = {
+            name: "",
+            email: "",
+            comments: ""
+        }
+
+        const res = await fetch(`https://kyh-net22.azurewebsites.net/api/contacts`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(form)
+        })
+
+        if (res.status === 200) {
+            console.log('Tack för din förfrågan!')
+        }
+        else {
+            console.log('error: ')
+        }
+    }
 }
-
-
-
-// async function handleContactForm(e) {
-//     e.preventDefault()
-
-//     const form = {
-//         name: "",
-//         email: "",
-//         comments: ""
-//     }
-
-//     const res = await fetch(/*`https://kyh-net22.azurewebsites.net/api/contacts`*/'', {
-//         method: 'post',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(form)
-//     })
-
-//     if (res.status === 200) {
-//         console.log('Tack för din förfrågan!')
-//     }
-//     else{
-//         console.log('error')
-//     }
-// }
