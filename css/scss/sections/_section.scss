@@ -176,8 +176,8 @@
                         text-align: center;
 
                         @include md {
-                            padding: 1rem;
-                            font-size: 0.9em;
+                            padding: 13px 50px;
+                            font-size: 16px;
 
                             &::before {
                                 content: "";
@@ -259,7 +259,7 @@
 
                             @include md {
                                 #menu-link-heart {
-                                    display: none;
+                                    display: flex;
                                 }
 
                                 @include lg {
@@ -310,7 +310,8 @@
                                 @include md {
                                     height: 36px;
                                     width: 36px;
-                                    font-size: 17px;
+                                    font-size: 16px;
+                                    margin-bottom: 8px;
                                 }
 
                                 @include xl {

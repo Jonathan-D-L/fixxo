@@ -23,45 +23,49 @@ function convertToStars(starRating) {
     return stars;
 }
 
-/*  
-    category: 
-    currency: 
-    discountPrice: 
-    imageUrl: 
-    name: 
-    originalPrice: 
-    starRating: 
-    tag:
-*/
-
 async function getData() {
+    let featuredCounter = 0;
+    let newCounter = 0;
+    let popularCounter = 0;
     const res = await fetch('https://kyh-net22.azurewebsites.net/api/products')
     const data = await res.json()
+
     try {
         for (let product of data) {
-            if (product.tag === 'featured') {
-                document.getElementById('products').innerHTML +=
-                    `<div class="product-card">
+            const productHTML = 
+            `<div class="product-card">
                 <div class="product-card-img">
-                <img src="${product.imageUrl}">
-                <div class="product-card-menu">
-                <nav class="menu-icons">
-                <a class="menu-link" href="#"><i class="fa-regular fa-code-compare"></i></a>
-                <a class="menu-link" href="#"><i class="fa-regular fa-heart"></i></a>
-                <a class="menu-link" href="#"><i class="fa-regular fa-bag-shopping"></i></a>
-                </nav>
-                <a href="#" class="btn-theme">QUICK VIEW</a>
-                </div>
-                </div>
-                <div class="product-card-body">
-                <p class="product-card-category">${product.category}</p>
-                <p class="product-card-title">${product.name}</p>
-                <div class="product-card-rating">
-                ${convertToStars(product.starRating)}
-                </div>
+                    <img src="${product.imageUrl}">
+                        <div class="product-card-menu">
+                            <nav class="menu-icons">
+                                <a class="menu-link" href="#"><i class="fa-regular fa-code-compare"></i></a>
+                                <a class="menu-link" id="menu-link-heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                                <a class="menu-link" href="#"><i class="fa-regular fa-bag-shopping"></i></a>
+                            </nav>
+                            <a href="#" class="btn-theme">QUICK VIEW</a>
+                        </div>
+                    </div>
+                    <div class="product-card-body">
+                        <p class="product-card-category">${product.category}</p>
+                        <p class="product-card-title">${product.name}</p>
+                    <div class="product-card-rating">
+                        ${convertToStars(product.starRating)}
+                    </div>
                 <p class="product-card-price">${product.originalPrice} ${product.currency}</p>
                 </div>
-        </div>`
+                </div>`
+
+            if (product.tag === 'featured' && featuredCounter < 8) {
+                document.getElementById('featured-products').innerHTML += productHTML;
+                featuredCounter++;
+            }
+            if (product.tag === 'new' && newCounter < 6) {
+                document.getElementById('new-products').innerHTML += productHTML
+                newCounter++;
+            }
+            if (product.tag === 'popular' && popularCounter < 6) {
+                document.getElementById('popular-products').innerHTML += productHTML
+                popularCounter++;
             }
         }
     }
@@ -158,6 +162,9 @@ async function handleSubmit(e) {
     }
 
     if (!errors.includes(false)) {
+        let inputName = document.getElementById('name');
+        let inputEmail = document.getElementById('email');
+        let inputComment = document.getElementById('comment');
 
         const form = {
             name: e.target[0].value,
@@ -176,10 +183,17 @@ async function handleSubmit(e) {
         if (res.status === 200) {
             let submit = document.getElementById("error-submit")
             submit.style.color = "#000000";
+            inputName.value = '';
+            inputEmail.value = '';
+            inputComment.value = '';
             submit.innerHTML = 'Tack för din förfrågan!'
             console.log('Tack för din förfrågan!')
         }
         else {
+            inputName.value = '';
+            inputEmail.value = '';
+            inputComment.value = '';
+            document.getElementById('comment').value='';
             document.getElementById('error-submit').innerHTML = 'Något gick fel.'
             console.log('error: ')
         }
