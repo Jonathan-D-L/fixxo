@@ -40,6 +40,10 @@
             .product-card-img {
                 position: relative;
 
+                @include md {
+                    height: 65%;
+                }
+
                 img {
                     width: 100%;
                     object-fit: cover;
@@ -103,7 +107,7 @@
 
             @include lg {
                 .product-card-img .product-card-menu {
-                    opacity: 0%;
+                    opacity: 100%;
                     transition: all 0.15s;
                 }
 

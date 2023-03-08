@@ -33,7 +33,7 @@
             height: auto;
 
             @include xl {
-                margin-bottom: 24px;
+                margin-bottom: 20px;
                 background: $color-shadow-2;
             }
 
@@ -70,7 +70,7 @@
             @include xl {
                 background: $color-shadow-2;
                 margin-top: 50px;
-                margin-bottom: 23px;
+                margin-bottom: 20px;
             }
 
             .content {
@@ -147,18 +147,30 @@
                         font-weight: 500;
                         color: #616365;
                         margin-top: 15px;
+                        @include md {
+                            font-size: 10px;
+                            margin-top: 8px;
+                        }
                     }
 
                     .product-card-title {
                         font-size: 20px;
                         font-weight: $font-weight-bold;
-
+                        margin-top: 10px;
+                        @include md {
+                            font-size: 12px;
+                            margin-top: 4px;
+                        }
                     }
 
                     .product-card-rating {
                         color: $color-theme;
                         font-size: 20px;
                         margin-top: 10px;
+                        @include md {
+                            font-size: 14px;
+                            margin-top: 4px;
+                        }
                     }
 
                     .product-card-price {
@@ -166,6 +178,10 @@
                         font-weight: $font-weight-bold;
                         margin-top: 10px;
                         margin-bottom: 15px;
+                        @include md {
+                            font-size: 14px;
+                            margin-top: 4px;
+                        }
                     }
 
                     .product-card-menu .btn-theme {
