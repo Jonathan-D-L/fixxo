@@ -160,9 +160,9 @@ async function handleSubmit(e) {
     if (!errors.includes(false)) {
 
         const form = {
-            name: "",
-            email: "",
-            comments: ""
+            name: e.target[0].value,
+            email: e.target[1].value,
+            comments: e.target[2].value
         }
 
         const res = await fetch(`https://kyh-net22.azurewebsites.net/api/contacts`, {
