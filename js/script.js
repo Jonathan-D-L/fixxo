@@ -48,7 +48,7 @@ async function getData() {
                     </div>
                     <div class="product-card-body">
                         <p class="product-card-category">${product.category}</p>
-                        <p class="product-card-title">${product.name}</p>
+                        <div class="product-card-title-container"><p class="product-card-title">${product.name}</p></div>
                         <div class="product-card-rating">${convertToStars(product.starRating)}</div>
                         <p class="product-card-price">${product.originalPrice} ${product.currency}</p>
                     </div>
