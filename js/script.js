@@ -34,26 +34,26 @@ async function getData() {
         for (let product of data) {
             const productHTML = 
             `<div class="product-card">
-                <div class="product-card-img">
-                    <img src="${product.imageUrl}">
+                <div class="product-card-grid">
+                    <div class="product-card-img">
+                        <img src="${product.imageUrl}">
                         <div class="product-card-menu">
-                            <nav class="menu-icons">
-                                <a class="menu-link" href="#"><i class="fa-regular fa-code-compare"></i></a>
-                                <a class="menu-link" id="menu-link-heart" href="#"><i class="fa-regular fa-heart"></i></a>
-                                <a class="menu-link" href="#"><i class="fa-regular fa-bag-shopping"></i></a>
-                            </nav>
-                            <a href="#" class="btn-theme">QUICK VIEW</a>
+                        <nav class="menu-icons">
+                        <a class="menu-link" href="#"><i class="fa-regular fa-code-compare"></i></a>
+                        <a class="menu-link" id="menu-link-heart" href="#"><i class="fa-regular fa-heart"></i></a>
+                        <a class="menu-link" href="#"><i class="fa-regular fa-bag-shopping"></i></a>
+                        </nav>
+                        <a href="#" class="btn-theme">QUICK VIEW</a>
                         </div>
                     </div>
                     <div class="product-card-body">
                         <p class="product-card-category">${product.category}</p>
                         <p class="product-card-title">${product.name}</p>
-                    <div class="product-card-rating">
-                        ${convertToStars(product.starRating)}
+                        <div class="product-card-rating">${convertToStars(product.starRating)}</div>
+                        <p class="product-card-price">${product.originalPrice} ${product.currency}</p>
                     </div>
-                <p class="product-card-price">${product.originalPrice} ${product.currency}</p>
                 </div>
-                </div>`
+            </div>`
 
             if (product.tag === 'featured' && featuredCounter < 8) {
                 document.getElementById('featured-products').innerHTML += productHTML;
