@@ -32,8 +32,8 @@ async function getData() {
 
     try {
         for (let product of data) {
-            const productHTML = 
-            `<div class="product-card">
+            const productHTML =
+                `<div class="product-card">
                 <div class="product-card-grid">
                     <div class="product-card-img">
                         <img src="${product.imageUrl}">
@@ -109,6 +109,7 @@ function validateComment(element) {
 }
 
 function validate(event) {
+    document.getElementById("error-submit").innerHTML = '';
     switch (event.target.name) {
         case 'email':
             validateEmail(event.target)
@@ -127,7 +128,6 @@ async function handleSubmit(e) {
     const errors = []
     const errorMessage = document.getElementById('error-submit')
     errorMessage.innerHTML = ''
-
     for (let element of e.target) {
         if (element.required) {
             const errorElement = document.getElementById(`error-${element.name}`)
@@ -165,6 +165,7 @@ async function handleSubmit(e) {
         let inputName = document.getElementById('name');
         let inputEmail = document.getElementById('email');
         let inputComment = document.getElementById('comment');
+        let submit = document.getElementById("error-submit")
 
         const form = {
             name: e.target[0].value,
@@ -181,22 +182,19 @@ async function handleSubmit(e) {
         })
 
         if (res.status === 200) {
-            let submit = document.getElementById("error-submit")
             submit.style.color = "#000000";
             inputName.value = '';
             inputEmail.value = '';
             inputComment.value = '';
-            submit.innerHTML = 'Tack för din förfrågan!'
-            console.log('Tack för din förfrågan!')
+            submit.innerHTML = 'Thank you for your inquiry!'
+            console.log('Success')
         }
         else {
             inputName.value = '';
             inputEmail.value = '';
             inputComment.value = '';
-            document.getElementById('comment').value='';
-            document.getElementById('error-submit').innerHTML = 'Något gick fel.'
-            console.log('error: ')
+            submit.innerHTML = 'Something went wrong.'
+            console.log('Error: ')
         }
-
     }
 }
